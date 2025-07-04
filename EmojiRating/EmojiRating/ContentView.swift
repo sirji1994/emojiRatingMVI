@@ -17,7 +17,7 @@ struct ContentView: View {
                 .fontWeight(.medium)
                 .foregroundStyle(Color.black)
             HStack(spacing: 15) {
-                ForEach(ratingVM.allRatings) { rating in
+                ForEach(ratingVM.ratingState.allRatings) { rating in
                     Button {
                         withAnimation(.easeInOut(duration: 0.2)) {
                             ratingVM.sendRatingIntent(.tapRating(rating))
@@ -25,12 +25,12 @@ struct ContentView: View {
                     } label: {
                         Text(rating.emoji)
                             .font(.largeTitle)
-                            .scaleEffect(ratingVM.selectedRating == rating ? 1.4 : 1.0)
+                            .scaleEffect(ratingVM.ratingState.selectedRating == rating ? 1.4 : 1.0)
                     }
                 }
             }
             .padding(.bottom, 10)
-            if let selectedRating = ratingVM.selectedRating {
+            if let selectedRating = ratingVM.ratingState.selectedRating {
                 Text("You feel: \(selectedRating.emoji) \(selectedRating.message)")
                     .font(.title2)
                     .fontWeight(.medium)

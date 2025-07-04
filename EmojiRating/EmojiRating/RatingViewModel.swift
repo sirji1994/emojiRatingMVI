@@ -10,11 +10,10 @@ import Observation
 
 @Observable
 class RatingViewModel {
-    var allRatings: [EmojiRating] = []
-    var selectedRating: EmojiRating?
+    var ratingState = RatingState()
     
     func createRatings() {
-        allRatings = [.init(emoji: "😡", message: "Angry"),
+        ratingState.allRatings = [.init(emoji: "😡", message: "Angry"),
                       .init(emoji: "😐", message: "Neutral"),
                       .init(emoji: "🙂", message: "Satisfied"),
                       .init(emoji: "😄", message: "Happy"),
@@ -24,7 +23,7 @@ class RatingViewModel {
     func sendRatingIntent(_ intent: RatingIntent) {
         switch intent {
         case .tapRating(let rating):
-            selectedRating = selectedRating == rating ? nil : rating
+            ratingState.selectedRating = ratingState.selectedRating == rating ? nil : rating
         }
     }
 }
