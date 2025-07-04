@@ -62,7 +62,11 @@ User Action (Intent)
 This strict flow ensures all state changes are traceable and simplifies debugging and testing.
 
 ✅ Benefits of MVI in iOS
+
 Declarative UI works well with immutable state
+
 Easy to plug into Combine or Swift Concurrency
+
 Encourages modular, testable code
+
 Ideal for SwiftUI and Kotlin Multiplatform projects sharing architecture concepts
