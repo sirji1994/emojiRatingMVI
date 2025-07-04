@@ -8,6 +8,7 @@ This is single page Emoji Rating App created with help of MVI architecture.
 Represents the UI state at any given moment. It's a plain struct that holds all data needed for the view.
 
 struct RatingState {
+
     var selectedRating: EmojiRating? = nil
 }
 
@@ -16,6 +17,7 @@ struct RatingState {
 A pure SwiftUI view that observes the state and renders it. It never mutates state directly.
 
 struct RatingView: View {
+
     @Observable var viewModel: RatingViewModel
     ...
 }
@@ -25,6 +27,7 @@ struct RatingView: View {
 Represents user actions or system events. The View sends these to the ViewModel.
 
 enum RatingIntent {
+
     case tapRating(EmojiRating)
 }
 
@@ -34,19 +37,28 @@ Handles all logic. It receives Intents, reduces them into new State, and publish
 
 @Observable
 class RatingViewModel {
+
     var allRatings: [EmojiRating] = []
     var selectedRating: EmojiRating?
     ....
 }
 
 🔁 Unidirectional Data Flow
+
 User Action (Intent)
+
         ↓
+        
    ViewModel (Reducer)
+   
         ↓
+        
      New State
+     
         ↓
+        
       View (UI)
+      
 This strict flow ensures all state changes are traceable and simplifies debugging and testing.
 
 ✅ Benefits of MVI in iOS
